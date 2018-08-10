@@ -25,9 +25,12 @@ int GetKeyInput() {
       case 75: return KEY_LEFT;
       case 71: return KEY_HOME;
       case 79: return KEY_END;
-      case KEY_DEL2: return KEY_DEL;
+      //case KEY_DEL2: return KEY_DEL;
       default: return v;
     }
+  }
+  else if (v == KEY_DEL2) {
+    return KEY_DEL;
   }
   return v;
 }
