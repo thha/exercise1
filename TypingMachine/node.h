@@ -13,6 +13,16 @@ class Node {
   Node* GetNextNode();
   bool ErasePreviousNode();
   bool EraseNextNode();
+
+ private:
+  static void Erase(Node* node);
+
+  void InsertBetween(Node* prev, Node*next);
+  void LinkBothSide();
+
+  char data;
+  Node* prevNode;
+  Node* nextNode;
 };
 
 #endif  // NODE_H_

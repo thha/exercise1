@@ -5,7 +5,7 @@
 
 #include "node.h"
 #include "typing_machine.h"
-#include "getch_linux.h"
+#include "getch.h"
 
 const char full_board[5][34] = {
   "+-------+   +-------+   +-------+",
