@@ -66,5 +66,6 @@ std::string TypingMachine::Print(char separator) {
     }
     buffer.push_back(node->GetData());
   }
+  buffer.pop_back();
   return buffer;
 }
