@@ -46,11 +46,20 @@ private:
     delete node;
     delete next;
   }
+  static void InsertMiddleTest() {
+    Node *node = new Node('A');
+    node->InsertNextNode('B');
+    Node *prev = node->InsertPreviousNode('C');
+    Node *target = prev->InsertNextNode('K');
 
+    ASSERT_EQ(target->GetNextNode()->GetData(), 'A');
+    ASSERT_EQ(target->GetPreviousNode()->GetData(), 'C');
+  }
 public:
   static void RunTest() {
     InsertPreviousTest();
     InsertNextTest();
+    InsertMiddleTest();
   }
 };
 
