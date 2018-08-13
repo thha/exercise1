@@ -59,7 +59,7 @@ class NodeEraseTestSuite
 private:
   static void ErasePreviousTest() {
     Node *node = new Node('A');
-    Node *prev = node->InsertPreviousNode('P');
+    node->InsertPreviousNode('P');
 
     bool is_success = node->ErasePreviousNode();
     ASSERT_TRUE(is_success);
@@ -73,7 +73,7 @@ private:
 
   static void EraseNextTest() {
     Node *node = new Node('A');
-    Node *next = node->InsertNextNode('N');
+    node->InsertNextNode('N');
 
     bool is_success = node->EraseNextNode();
     ASSERT_TRUE(is_success);
