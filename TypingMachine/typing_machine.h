@@ -21,6 +21,7 @@ class TypingMachine {
  private:
   Node* cursor;
   Node* head;
+  int length;
 };
 
 #endif  // TYPING_MACHINE_H_
