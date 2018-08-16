@@ -4,12 +4,13 @@
 
 
 TypingMachine::TypingMachine() {
-  this->head = this->cursor = new Node(' ');
+  this->head = new Node(' ');
+  this->cursor = this->head->InsertNextNode(' ');
   this->length = 0;
 }
 
 void TypingMachine::HomeKey() {
-  this->cursor = this->head;
+  this->cursor = this->head->GetNextNode();
 }
 
 void TypingMachine::EndKey() {
@@ -20,7 +21,7 @@ void TypingMachine::EndKey() {
 
 void TypingMachine::LeftKey() {
   Node* prev = this->cursor->GetPreviousNode();
-  if (prev != nullptr) {
+  if (prev != this->head) {
     this->cursor = prev;
   }
 }
@@ -41,18 +42,13 @@ bool TypingMachine::TypeKey(char key) {
   }
   Node *newNode = this->cursor->InsertPreviousNode(key);
   this->length++;
-  if (this->cursor == this->head) {
-    this->head = newNode;
-  }
   return true;
 }
 
 bool TypingMachine::EraseKey() {
-  if (this->cursor->ErasePreviousNode()) {
-    this->length--;
-    if (this->cursor->GetPreviousNode() == nullptr) {
-      this->head = this->cursor;
-    }
+  Node *prev = this->cursor->GetPreviousNode();
+  if (prev != this->head) {
+    this->cursor->ErasePreviousNode();
     return true;
   }
   return false;
@@ -60,7 +56,7 @@ bool TypingMachine::EraseKey() {
 
 std::string TypingMachine::Print(char separator) {
   std::string buffer;
-  for (Node* node = this->head; node != nullptr; node = node->GetNextNode()) {
+  for (Node* node = this->head->GetNextNode(); node != nullptr; node = node->GetNextNode()) {
     if (node == this->cursor && separator != 0) {
       buffer.push_back(separator);
     }
